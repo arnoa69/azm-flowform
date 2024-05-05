@@ -724,8 +724,8 @@ header.vff-header svg.f-logo {
   padding: 8px 8px 10px;
   margin-bottom: 8px;
   margin-right: 8px;
-  -ms-flex: 0 0 calc(25% - 8px);
-  flex: 0 0 calc(25% - 8px);
+  -ms-flex: 0 0 calc(49% - 8px);
+  flex: 0 0 calc(49% - 8px);
   font-size: 15px;
   line-height: 1.38;
 }
@@ -739,7 +739,7 @@ header.vff-header svg.f-logo {
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  height: 140px;
+  height: 160px;
   margin-bottom: 8px;
 }
 
@@ -1354,8 +1354,8 @@ header.vff-header svg.f-logo {
   }
 
   .vff .field-multiplepicturechoice ul.f-radios li {
-    -ms-flex: 0 0 calc(50% - 8px);
-    flex: 0 0 calc(50% - 8px);
+    -ms-flex: 0 0 calc(100% - 8px);
+    flex: 0 0 calc(100% - 8px);
   }
 
   .vff .field-opinionscale ul.f-radios li {

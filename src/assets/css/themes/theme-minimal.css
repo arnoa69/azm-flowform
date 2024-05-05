@@ -15,6 +15,7 @@
   --vff-tertiary-text-color: #f1f1f1;
   --vff-main-accent-color: #0DBC79;
   --vff-secondary-accent-color: #BBEBD5;
+  --vff-quarto-text-color: #df2810;
 }
 
 .vff,
@@ -113,8 +114,8 @@ header.vff-header svg.f-logo {
 
 .vff ul.f-radios li.f-selected,
 .vff ul.f-radios li:active {
-  border-color: var(--vff-main-text-color);
-  background-color: var(--vff-tertiary-text-color);
+  border: 3px solid var(--vff-quarto-text-color);
+  background-color: var(--vff-bg-color);
 }
 
 .vff ul.f-radios li.f-other.f-selected input {

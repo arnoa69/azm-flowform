@@ -11,7 +11,7 @@ const getCurrentLanguage = () => {
   }
 
   // Schritt 4: Falls keine Sprache gefunden wurde, gib eine Standardsprache zurück
-  return 'fr'; // Hier kannst du deine Standardsprache festlegen
+  return 'es'; // Hier kannst du deine Standardsprache festlegen
 };
 
 const i18n = createI18n({
