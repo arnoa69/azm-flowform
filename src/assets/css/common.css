@@ -193,7 +193,7 @@ header.vff-header .f-container{
 }
 
 .vff .f-container {
-  margin-top: 1em;
+  margin-top: 2.6em;
   margin-bottom: 1em;
 }
 
@@ -1002,7 +1002,7 @@ header.vff-header svg.f-logo {
 
 .vff-footer {
   position: fixed;
-  bottom: 0;
+  top: 0;
   right: 0;
   width: 100%;
   font-weight: 300;

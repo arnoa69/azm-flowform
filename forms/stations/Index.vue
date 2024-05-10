@@ -1,7 +1,7 @@
 // Create and setup your form here
 
 <template>
-  <div> sttions
+  <div>
     <flow-form
       ref="flowform"
       v-on:complete="onComplete"
@@ -17,7 +17,7 @@
           <p>
             <span class="fh2">{{ language.endThankyou }}</span>
             <span class="f-section-text">
-              We are done with the survey.
+              {{ language.we_are_done }}
             </span>
           </p>
           <p class="f-description">
@@ -94,42 +94,10 @@ export default {
       completed: false,
       language: new LanguageModel(),
       translation: "",
-      // Create question list with QuestionModel instances
       questions: [
-        // new QuestionModel({
-        //   id: 'multiple_choice',
-        //   tagline: 'Pour info, vous pouvez toujours revenir en arrière 👈, utilisez la flèche vers le haut en bas.',
-        //   title: 'Dans lequel des secteurs suivants votre entreprise est-elle active ?',
-        //   helpTextShow: false,
-        //   type: QuestionType.MultipleChoice,
-        //   multiple: false,
-        //   allowOther: true,
-        //   required: true,
-        //   options: [
-        //     new ChoiceOption({
-        //       label: 'Fabrication'
-        //     }),
-        //     new ChoiceOption({
-        //       label: 'Logistique'
-        //      }),
-        //     new ChoiceOption({
-        //       label: 'Commerce de détail'
-        //     }),
-        //     new ChoiceOption({
-        //       label: 'Gastronomie'
-        //     }),
-        //     new ChoiceOption({
-        //       label: 'Construction'
-        //     }),
-        //     new ChoiceOption({
-        //       label: 'Automobiles'
-        //     })
-        //   ]
-        // }),
-
         /* BEGIN - Ramp type */
         new QuestionModel({
-          id: 'path_fix_or_mobile_or_station',
+          id: 'path_station_choice',
           /*tagline: translations.qLoadingRampTypeTagline, */
           title: translations.qLoadingRampTypeTitle,
           helpTextShow: true,
@@ -138,292 +106,23 @@ export default {
           required: true,
           options: [
             new ChoiceOption({
-              imageSrc: productData.products[0].product_image,
+              imageSrc: productData.products[23].product_image,
               imageAlt: translations.qRampTypeFix,
               label: translations.qRampTypeFix,
-              value: 'path_fix'
+              value: 'path_weight_6_to_10'
             }),            
             new ChoiceOption({
-              imageSrc: productData.products[6].product_image,
+              imageSrc: productData.products[35].product_image,
               imageAlt: translations.qRampTypeMobile,
               label: translations.qRampTypeMobile,
-              value: 'path_mobile'
-            }), 
-            new ChoiceOption({
-              imageSrc: productData.products[23].product_image,
-              imageAlt: translations.qRampTypeStationWithRamp,
-              label: translations.qRampTypeStationWithRamp,
-              value: 'path_station'
-            }),
-          ],
-          jump: {
-            path_fix: 'path_fix',
-            path_mobile: 'path_mobile',
-            path_station: 'path_station',
-          }
-        }),
-
-         new QuestionModel({
-          id: 'path_fix',
-          tagline: translations.qRampFixTagline,
-          title: translations.qRampFixTitle,
-          helpTextShow: false,
-          type: QuestionType.MultiplePictureChoice,
-          multiple: false,
-          allowOther: true,
-          required: true,
-          options: [
-            new ChoiceOption({
-              imageSrc: productData.products[0].product_image,
-              imageAlt: translations.qRampFixLeveler,
-              label: translations.qRampFixLeveler,
-              value: 'path_to_1_leveler_info'
-            }),
-            new ChoiceOption({
-              imageSrc: productData.products[1].product_image,
-              imageAlt: translations.qRampFixAdjacent,
-              label: translations.qRampFixAdjacent,
-              value: 'path_weight_8_to_10'
-             }),         
-            new ChoiceOption({
-              imageSrc: productData.products[9].product_image,
-              imageAlt: translations.qRampFixSimple,
-              label: translations.qRampFixSimple,
-              value: 'path_weight_8_to_12'
-            })
-          ],
-          jump: {
-            path_to_1_leveler_info: 'path_to_1_leveler_info',
-            path_weight_8_to_10: 'path_weight_8_to_10',
-            path_weight_8_to_12: 'path_weight_8_to_12',
-          }
-        }),
-
-        new QuestionModel({
-          id: 'path_to_1_leveler_info',
-          title: translations.path_to_1_leveler_info_title,
-          content: translations.path_to_1_leveler_info_content,
-          helpTextShow: false,
-          type: QuestionType.SectionBreak,
-          required: false,
-          jump: {
-              path_info_contact_data: 'path_info_contact_data',
-          }
-        }),
-
-        new QuestionModel({
-          id: 'path_mobile',
-         /* tagline: translations.qRampMobileTagline, */
-          title: translations.qRampMobileTitle,
-          helpTextShow: false,
-          type: QuestionType.MultiplePictureChoice,
-          multiple: false,
-          allowOther: true,
-          required: true,
-          options: [
-            new ChoiceOption({
-              imageSrc: productData.products[6].product_image,
-              imageAlt: translations.qRampMobileHydraulic,
-              label: translations.qRampMobileHydraulic,
-              value: 'path_weight_8_to_20'
-            }),
-            new ChoiceOption({
-              imageSrc: productData.products[26].product_image,
-              imageAlt: translations.qRampMobileElectric,
-              label: translations.qRampMobileElectric,
-              value: 'path_electric'
-            }),
-            new ChoiceOption({
-              imageSrc: productData.products[31].product_image,
-              imageAlt: translations.qRampMobileGas,
-              label: translations.qRampMobileGas,
-              value: 'path_weight_8_to_20'
-            }),         
-            new ChoiceOption({
-              imageSrc: productData.products[13].product_image,
-              imageAlt: translations.qRampMobileManual,
-              label: translations.qRampMobileManual,
-              value: 'path_weight_8_to_20'
-            }),                                
-          ],
-          jump: {
-            path_weight_8_to_20: 'path_weight_8_to_20',
-            path_electric: 'path_electric'
-          }
-        }),
-        new QuestionModel({
-          id: 'path_electric',
-          tagline: translations.qRampElectricChoiceTagline,
-          title: translations.qRampElectricChoiceTitle,
-          helpTextShow: false,
-          type: QuestionType.MultiplePictureChoice,
-          multiple: false,
-          allowOther: true,
-          required: true,
-          options: [
-            new ChoiceOption({
-              imageSrc: productData.products[26].product_image,
-              imageAlt: translations.qRampElectricChoiceZRLLO,
-              label: translations.qRampElectricChoiceZRLLO,
-              value: 'path_weight_8_to_20'
-            }),
-            new ChoiceOption({
-              imageSrc: productData.products[40].product_image,
-              imageAlt: translations.qRampElectricChoiceZRE,
-              label: translations.qRampElectricChoiceZRE,
-              value: 'path_weight_8_to_15'
-            }),
-            new ChoiceOption({
-              imageSrc: productData.products[44].product_image,
-              imageAlt: translations.qRampElectricChoiceXLE,
-              label: translations.qRampElectricChoiceXLE,
-              value: 'path_weight_10_to_20'
-            })                               
-          ],
-          jump: {
-            path_weight_8_to_20: 'path_weight_8_to_20',
-            path_weight_8_to_15: 'path_weight_8_to_15',
-            path_weight_10_to_20: 'path_weight_10_to_20'
-          }
-        }),    
-
-        new QuestionModel({
-          id: 'path_station',
-          tagline: translations.qRampStationTagline,
-          title: translations.qRampStationTitle,
-          helpTextShow: false,
-          type: QuestionType.MultiplePictureChoice,
-          multiple: false,
-          allowOther: true,
-          required: true,
-          options: [
-            new ChoiceOption({
-              imageSrc: productData.products[3].product_image,
-              imageAlt: translations.qRampStationWithLeveler,
-              label: translations.qRampStationWithLeveler,
-              value: 'path_weight_8_to_10'
-            }),
-            new ChoiceOption({
-              imageSrc: productData.products[24].product_image,
-              imageAlt: translations.qRampStationLevelerAndRamp,
-              label: translations.qRampStationLevelerAndRamp,
               value: 'path_weight_6_to_10'
-             }),
-             new ChoiceOption({
-              imageSrc: require('./assets/images/rampen/planning-loading-ramp.jpg'),
-              imageAlt: translations.qRampStationCustom,
-              label: translations.qRampStationCustom,
-              value: 'path_to_upload_blueprint'
-             }),             
-          ],
-          jump: {
-            path_weight_6_to_10: 'path_weight_6_to_10',
-            path_weight_8_to_10: 'path_weight_8_to_10',
-            path_to_upload_blueprint: 'path_to_upload_blueprint'
-          }
-        }),
-
-        new QuestionModel({
-          id: 'path_to_upload_blueprint',
-          tagline: translations.qFileUploadTagline,
-          title: translations.qFileUploadTitle,
-          helpTextShow: true,
-          type: QuestionType.File,
-          jump: {
-            path_info_contact_data: 'path_info_contact_data',
-          }
-        }),
-        
-        new QuestionModel({
-          id: 'path_to_skipped',
-          tagline: translations.qFileUploadSkippedTagline,
-          title: translations.qFileUploadSkippedTitle,
-          helpTextShow: true,
-          type: QuestionType.MultipleChoice,
-          multiple: false,
-          allowOther: false,
-          options: [
-            new ChoiceOption({
-              label: translations.qFileUploadSkippedLabelRestart,
-              value: 'path_fix_or_mobile_or_station'
-            }),
-            new ChoiceOption({
-              label: translations.qFileUploadSkippedLabelContactUs,
-              value: 'path_info_contact_data'
-            }),
-          ],
-          jump: {
-            path_fix_or_mobile_or_station: 'path_fix_or_mobile_or_station',
-            path_info_contact_data: 'path_info_contact_data',
-          }
-        }),  
-        /* END - Ramp type */      
-
-        /* BEGIN - Ramp weight potential */
-        new QuestionModel({
-          id: 'path_weight_8_to_20',
-          tagline: translations.qRampWeight8to20Tagline,
-          title: translations.qRampWeight8to20Title,
-          helpTextShow: false,
-          type: QuestionType.MultipleChoice,
-          multiple: false,
-          allowOther: true,
-          required: true,
-          options: [
-            new ChoiceOption({
-              label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            }),
-            new ChoiceOption({
-              label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            }),
-            new ChoiceOption({
-              label: '12-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            }),
-            new ChoiceOption({
-              label: '15-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            }),
-            new ChoiceOption({
-              label: '20-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            }),
-          ],
-          jump: {
-            path_info_contact_data: 'path_info_contact_data',
-          }
-        }),
-
-        new QuestionModel({
-          id: 'path_weight_8_to_12',
-          tagline: translations.qRampWeight8to12Tagline,
-          title: translations.qRampWeight8to12Title,
-          helpTextShow: false,
-          type: QuestionType.MultipleChoice,
-          multiple: false,
-          allowOther: true,
-          required: true,
-          options: [
-            new ChoiceOption({
-              label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data',
-            }),
-            new ChoiceOption({
-              label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data',
-            }),
-            new ChoiceOption({
-              label: '12-Tonne Loading Ramp',
-              value: 'path_info_contact_data',
             })
           ],
           jump: {
-            path_info_contact_data: 'path_info_contact_data',
+            path_weight_6_to_10: 'path_weight_6_to_10'
           }
-        }),       
-        
+        }),
+        /* END - Ramp type */            
         new QuestionModel({
           id: 'path_weight_6_to_10',
           tagline: translations.qRampWeight6to10Tagline,
@@ -431,86 +130,54 @@ export default {
           helpTextShow: false,
           type: QuestionType.MultipleChoice,
           multiple: false,
-          allowOther: true,
+          allowOther: false,
           required: true,
           options: [
             new ChoiceOption({
               label: '6-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: '6-Tonne Loading Ramp'
             }),
             new ChoiceOption({
               label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: '8-Tonne Loading Ramp'
             }),
             new ChoiceOption({
               label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: '10-Tonne Loading Ramp'
             })
-          ],
-          jump: {
-            path_info_contact_data: 'path_info_contact_data',
-          }
-        }),        
-        
+          ]
+        }),     
         new QuestionModel({
-          id: 'path_weight_10_to_20',
-          tagline: translations.qRampWeight10to20Tagline,
-          title: translations.qRampWeight10to20Title,
-          helpTextShow: false,
-          type: QuestionType.MultipleChoice,
-          multiple: false,
-          allowOther: true,
+          id: "quantity_needed",
+          tagline: translations.quantity_needed_tagline,
+          title: translations.quantity_needed_title,
+          type: QuestionType.Number,
           required: true,
-          options: [
-            new ChoiceOption({
-              label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            }),
-            new ChoiceOption({
-              label: '15-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            }),
-            new ChoiceOption({
-              label: '20-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            })
-          ],
-          jump: {
-            path_info_contact_data: 'path_info_contact_data',
-          }
-        }),                
-
-
+          placeholder: translations.placeholder_quantity,
+        }),              
         new QuestionModel({
-          id: 'path_weight_8_to_10',
-          tagline: translations.qRampWeight8to10Tagline,
-          title: translations.qRampWeight8to10Title,
-          helpTextShow: false,
-          type: QuestionType.MultipleChoice,
-          multiple: false,
-          allowOther: true,
+          id: "delivery_date",
+          tagline: translations.delivery_date_tagline,
+          title: translations.delivery_date_title,
+          type: QuestionType.Date,
           required: true,
-          options: [
-            new ChoiceOption({
-              label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            }),
-            new ChoiceOption({
-              label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
-            })
-          ],
-          jump: {
-            path_info_contact_data: 'path_info_contact_data',
-          }
-        }),    
+          placeholder: translations.placeholder,
+        }),              
+        new QuestionModel({
+          id: "additional_comments",
+          tagline: translations.additional_comments_tagline,
+          title: translations.additional_comments_title,
+          type: QuestionType.LongText,
+          required: true,
+          placeholder: translations.placeholder,
+        }),   
         /* END - Ramp weight potential */
 
         /* BEGIN - Collect Contact data */
         new QuestionModel({
           id: "path_info_contact_data",
-          tagline: translations.path_info_contact_data_title,
-          content: translations.path_info_contact_data_content,
+          tagline: translations.path_info_contact_data_tagline,
+          title: translations.path_info_contact_data_title,
           type: QuestionType.SectionBreak,
           helpTextShow: false,
           required: true,
@@ -541,7 +208,7 @@ export default {
           title: translations.qContactPhoneTitle,
           type: QuestionType.Phone,
           required: true,
-          mask: "(####) ###-####",
+          mask: "### ### ###",
         }),
 
         new QuestionModel({
@@ -556,8 +223,8 @@ export default {
         /* BEGIN - Last chance for changes then submit */
         new QuestionModel({
           id: "path_submit",
-          title: "Almost There! Share Your Feedback and We'll Be Done! 🥳",
-          content: "You can check your data again using the up arrow or send your data using the submit button",
+          title: translations.almost_there,
+          content: translations.next_path,
           type: QuestionType.SectionBreak,
           jump: {
             _other: "_submit",
@@ -628,17 +295,24 @@ export default {
           data_raw.answers.referer = referrer;
         }
 
-        data_raw.answers.choosen_product = "Eine geile rote 20T Rampe";
+        let tailored_message = {
+          "flowform": "stations",
+          "choice_station": data_raw.answers.path_station_choice,
+          "weight_capacity": data_raw.answers.path_weight_6_to_10,
+          "quantity": data_raw.answers.quantity_needed,
+          "delivery_date": data_raw.answers.delivery_date,
+          "comments": data_raw.answers.additional_comments,
+          "client_ip": data_raw.answers.ip_address,
+        };
+        let tailored_message_string = JSON.stringify(tailored_message);
 
-        formData.append("choosen_product", data_raw.answers.choosen_product);
         formData.append("company_name", data_raw.answers.company_name);
-        formData.append("contact_email", data_raw.answers.contact_email);
-        formData.append("contact_name", data_raw.answers.contact_name);
-        formData.append("contact_phone", data_raw.answers.contact_phone);
-        formData.append("country", data_raw.answers.country);
-        formData.append("ip_address", data_raw.answers.ip_address);
-        formData.append("referer", data_raw.answers.referer);
-        formData.append("referer_funnel_domain", data_raw.answers.referer_funnel_domain);
+        formData.append("email", data_raw.answers.contact_email);
+        formData.append("name", data_raw.answers.contact_name);
+        formData.append("phone_number", data_raw.answers.contact_phone);
+        formData.append("locale", data_raw.answers.country);
+        formData.append("message", tailored_message_string);
+        formData.append("source", 'layout1.flowform');
 
         const response = await axios.post(url, formData, {
           headers: {

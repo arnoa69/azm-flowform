@@ -17,7 +17,7 @@
           <p>
             <span class="fh2">{{ language.endThankyou }}</span>
             <span class="f-section-text">
-              We are done with the survey.
+              {{ language.we_are_done }}
             </span>
           </p>
           <p class="f-description">
@@ -287,11 +287,11 @@ export default {
           options: [
             new ChoiceOption({
               label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             })
           ],
           jump: {
-            path_info_contact_data: 'path_info_contact_data',
+            quantity_needed: 'quantity_needed',
           }
         }),        
         new QuestionModel({
@@ -306,27 +306,27 @@ export default {
           options: [
             new ChoiceOption({
               label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '12-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '15-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '20-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
           ],
           jump: {
-            path_info_contact_data: 'path_info_contact_data',
+            quantity_needed: 'quantity_needed',
           }
         }),
 
@@ -342,27 +342,27 @@ export default {
           options: [
             new ChoiceOption({
               label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '12-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '15-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '20-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
           ],
           jump: {
-            path_info_contact_data: 'path_info_contact_data',
+            quantity_needed: 'quantity_needed',
           }
         }),        
 
@@ -378,19 +378,19 @@ export default {
           options: [
             new ChoiceOption({
               label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data',
+              value: 'quantity_needed',
             }),
             new ChoiceOption({
               label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data',
+              value: 'quantity_needed',
             }),
             new ChoiceOption({
               label: '12-Tonne Loading Ramp',
-              value: 'path_info_contact_data',
+              value: 'quantity_needed',
             })
           ],
           jump: {
-            path_info_contact_data: 'path_info_contact_data',
+            quantity_needed: 'quantity_needed',
           }
         }),       
         
@@ -406,19 +406,19 @@ export default {
           options: [
             new ChoiceOption({
               label: '6-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             })
           ],
           jump: {
-            path_info_contact_data: 'path_info_contact_data',
+            quantity_needed: 'quantity_needed',
           }
         }),        
         
@@ -434,19 +434,19 @@ export default {
           options: [
             new ChoiceOption({
               label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '15-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '20-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             })
           ],
           jump: {
-            path_info_contact_data: 'path_info_contact_data',
+            quantity_needed: 'quantity_needed',
           }
         }),                
 
@@ -463,17 +463,42 @@ export default {
           options: [
             new ChoiceOption({
               label: '8-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '10-Tonne Loading Ramp',
-              value: 'path_info_contact_data'
+              value: 'quantity_needed'
             })
           ],
           jump: {
-            path_info_contact_data: 'path_info_contact_data',
+            path_info_contact_data: 'quantity_needed',
           }
-        }),    
+        }),  
+
+        new QuestionModel({
+          id: "quantity_needed",
+          tagline: translations.quantity_needed_tagline,
+          title: translations.quantity_needed_title,
+          type: QuestionType.Number,
+          required: true,
+          placeholder: translations.placeholder_quantity,
+        }),              
+        new QuestionModel({
+          id: "delivery_date",
+          tagline: translations.delivery_date_tagline,
+          title: translations.delivery_date_title,
+          type: QuestionType.Date,
+          required: true,
+          placeholder: translations.placeholder,
+        }),              
+        new QuestionModel({
+          id: "additional_comments",
+          tagline: translations.additional_comments_tagline,
+          title: translations.additional_comments_title,
+          type: QuestionType.LongText,
+          required: true,
+          placeholder: translations.placeholder,
+        }), 
         /* END - Ramp weight potential */
 
         /* BEGIN - Collect Contact data */
@@ -491,8 +516,8 @@ export default {
 
         new QuestionModel({
           id: "path_info_contact_data",
-          tagline: translations.path_info_contact_data_title,
-          content: translations.path_info_contact_data_content,
+          tagline: translations.path_info_contact_data_tagline,
+          title: translations.path_info_contact_data_title,
           type: QuestionType.SectionBreak,
           helpTextShow: false,
           required: true,
@@ -523,7 +548,7 @@ export default {
           title: translations.qContactPhoneTitle,
           type: QuestionType.Phone,
           required: true,
-          mask: "(####) ###-####",
+          mask: "### ### ###",
         }),
 
         new QuestionModel({
@@ -610,17 +635,28 @@ export default {
           data_raw.answers.referer = referrer;
         }
 
-        data_raw.answers.choosen_product = "Eine geile rote 20T Rampe";
+        let tailored_message = {
+          "flowform": "measures",
+          "industry": data_raw.answers.industry,
+          "dimension_length": data_raw.answers.dimension_length,
+          "dimension_width": data_raw.answers.dimension_width,
+          "dimension_height": data_raw.answers.dimension_height,
+          "weight_capacity": data_raw.answers.weight_capacity,
+          "quantity": data_raw.answers.quantity_needed,
+          "delivery_date": data_raw.answers.delivery_date,
+          "comments": data_raw.answers.additional_comments,
+          "client_ip": data_raw.answers.ip_address,
+        };
 
-        formData.append("choosen_product", data_raw.answers.choosen_product);
+        let tailored_message_string = JSON.stringify(tailored_message);
+
         formData.append("company_name", data_raw.answers.company_name);
-        formData.append("contact_email", data_raw.answers.contact_email);
-        formData.append("contact_name", data_raw.answers.contact_name);
-        formData.append("contact_phone", data_raw.answers.contact_phone);
-        formData.append("country", data_raw.answers.country);
-        formData.append("ip_address", data_raw.answers.ip_address);
-        formData.append("referer", data_raw.answers.referer);
-        formData.append("referer_funnel_domain", data_raw.answers.referer_funnel_domain);
+        formData.append("email", data_raw.answers.contact_email);
+        formData.append("name", data_raw.answers.contact_name);
+        formData.append("phone_number", data_raw.answers.contact_phone);
+        formData.append("locale", data_raw.answers.country);
+        formData.append("message", tailored_message_string);
+        formData.append("source", 'layout1.flowform');
 
         const response = await axios.post(url, formData, {
           headers: {
@@ -678,4 +714,6 @@ export default {
 /* If using the npm package, use the following lines instead of the one above */
 /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.css'; */
 /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css'; */
+
+
 </style>
