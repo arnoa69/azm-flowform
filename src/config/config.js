@@ -1,2 +1,8 @@
-//export const API_URL = "https://rampas-carga-moviles.es/api/v1/customers";
-export const API_URL = "http://public.test/api/v1/contact";
+let url = '';
+if(window.location.href.indexOf("localhost") > -1) {
+  url = "http://localhost:8081/api/v1/contact";
+} else {
+  url = "https://rampas-carga-moviles.es/api/v1/contact";
+}
+
+export const API_URL = url;
