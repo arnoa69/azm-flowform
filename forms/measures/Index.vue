@@ -341,7 +341,6 @@ export default {
     onSubmit(questionList) {
       // This method will only be called if you don't override the
       // completeButton slot.
-      console.log('onSubmit ici');
       this.onSendData();
     },
 
@@ -387,12 +386,12 @@ export default {
 
         let tailored_message_string = JSON.stringify(tailored_message);
 
-        formData.append("company_name", data_raw.answers.company_name);
-        formData.append("email", data_raw.answers.contact_email);
         formData.append("name", data_raw.answers.contact_name);
+        formData.append("email", data_raw.answers.contact_email);
+        formData.append("company_name", data_raw.answers.company_name);
         formData.append("phone_number", data_raw.answers.contact_phone);
-        formData.append("locale", data_raw.answers.country);
         formData.append("message", tailored_message_string);
+        formData.append("locale", data_raw.answers.country);
         formData.append("source", 'layout1.flowform');
 
         const response = await axios.post(url, formData, {

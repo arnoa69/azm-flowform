@@ -135,17 +135,20 @@ export default {
           options: [
             new ChoiceOption({
               label: '6-Tonne Loading Ramp',
-              value: '6-Tonne Loading Ramp'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '8-Tonne Loading Ramp',
-              value: '8-Tonne Loading Ramp'
+              value: 'quantity_needed'
             }),
             new ChoiceOption({
               label: '10-Tonne Loading Ramp',
-              value: '10-Tonne Loading Ramp'
+              value: 'quantity_needed'
             })
-          ]
+          ],
+          jump: {
+            quantity_needed: 'quantity_needed'
+          }
         }),     
         new QuestionModel({
           id: "quantity_needed",
@@ -154,7 +157,39 @@ export default {
           type: QuestionType.Number,
           required: true,
           placeholder: translations.placeholder_quantity,
-        }),              
+        }),    
+        new QuestionModel({
+          id: 'industry',
+          tagline: translations.industry_tagline,
+          title: translations.industry_title,
+          helpTextShow: false,
+          type: QuestionType.MultipleChoice,
+          multiple: false,
+          allowOther: true,
+          required: true,
+          options: [
+            new ChoiceOption({
+              label: translations.construction,
+              value: 'construction'
+            }),
+            new ChoiceOption({
+              label: translations.warehousing,
+              value: 'warehousing'
+            }),
+            new ChoiceOption({
+              label: translations.logistics,
+              value: 'logistics'
+            }),
+            new ChoiceOption({
+              label: translations.manufacturing,
+              value: 'manufacturing'
+            }),
+            new ChoiceOption({
+              label: translations.retail,
+              value: 'retail'
+            })
+          ]
+        }),                    
         new QuestionModel({
           id: "delivery_date",
           tagline: translations.delivery_date_tagline,
@@ -297,8 +332,11 @@ export default {
 
         let tailored_message = {
           "flowform": "stations",
-          "choice_station": data_raw.answers.path_station_choice,
-          "weight_capacity": data_raw.answers.path_weight_6_to_10,
+          "industry": data_raw.answers.industry,
+          "dimension_length": '-',
+          "dimension_width": '-',
+          "dimension_height": '-',
+          "weight_capacity": '-',
           "quantity": data_raw.answers.quantity_needed,
           "delivery_date": data_raw.answers.delivery_date,
           "comments": data_raw.answers.additional_comments,

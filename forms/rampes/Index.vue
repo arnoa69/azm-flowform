@@ -482,7 +482,39 @@ export default {
           type: QuestionType.Number,
           required: true,
           placeholder: translations.placeholder_quantity,
-        }),              
+        }), 
+        new QuestionModel({
+          id: 'industry',
+          tagline: translations.industry_tagline,
+          title: translations.industry_title,
+          helpTextShow: false,
+          type: QuestionType.MultipleChoice,
+          multiple: false,
+          allowOther: true,
+          required: true,
+          options: [
+            new ChoiceOption({
+              label: translations.construction,
+              value: 'construction'
+            }),
+            new ChoiceOption({
+              label: translations.warehousing,
+              value: 'warehousing'
+            }),
+            new ChoiceOption({
+              label: translations.logistics,
+              value: 'logistics'
+            }),
+            new ChoiceOption({
+              label: translations.manufacturing,
+              value: 'manufacturing'
+            }),
+            new ChoiceOption({
+              label: translations.retail,
+              value: 'retail'
+            })
+          ]
+        }),                     
         new QuestionModel({
           id: "delivery_date",
           tagline: translations.delivery_date_tagline,
@@ -502,17 +534,17 @@ export default {
         /* END - Ramp weight potential */
 
         /* BEGIN - Collect Contact data */
-        new QuestionModel({
-          id: 'path_to_1_leveler_info',
-          title: translations.path_to_1_leveler_info_title,
-          content: translations.path_to_1_leveler_info_content,
-          helpTextShow: false,
-          type: QuestionType.SectionBreak,
-          required: true,
-          jump: {
-              path_info_contact_data: 'path_info_contact_data',
-          }
-        }),
+        // new QuestionModel({
+        //   id: 'path_to_1_leveler_info',
+        //   title: translations.path_to_1_leveler_info_title,
+        //   content: translations.path_to_1_leveler_info_content,
+        //   helpTextShow: false,
+        //   type: QuestionType.SectionBreak,
+        //   required: true,
+        //   jump: {
+        //       path_info_contact_data: 'path_info_contact_data',
+        //   }
+        // }),
 
         new QuestionModel({
           id: "path_info_contact_data",
@@ -636,12 +668,12 @@ export default {
         }
 
         let tailored_message = {
-          "flowform": "measures",
+          "flowform": "rampes",
           "industry": data_raw.answers.industry,
-          "dimension_length": data_raw.answers.dimension_length,
-          "dimension_width": data_raw.answers.dimension_width,
-          "dimension_height": data_raw.answers.dimension_height,
-          "weight_capacity": data_raw.answers.weight_capacity,
+          "dimension_length": '-',
+          "dimension_width": '-',
+          "dimension_height": '-',
+          "weight_capacity": '-',
           "quantity": data_raw.answers.quantity_needed,
           "delivery_date": data_raw.answers.delivery_date,
           "comments": data_raw.answers.additional_comments,
@@ -650,12 +682,12 @@ export default {
 
         let tailored_message_string = JSON.stringify(tailored_message);
 
-        formData.append("company_name", data_raw.answers.company_name);
-        formData.append("email", data_raw.answers.contact_email);
         formData.append("name", data_raw.answers.contact_name);
+        formData.append("email", data_raw.answers.contact_email);
+        formData.append("company_name", data_raw.answers.company_name);
         formData.append("phone_number", data_raw.answers.contact_phone);
-        formData.append("locale", data_raw.answers.country);
         formData.append("message", tailored_message_string);
+        formData.append("locale", data_raw.answers.country);
         formData.append("source", 'layout1.flowform');
 
         const response = await axios.post(url, formData, {
